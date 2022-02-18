@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from './test components/renderWitchRounter';
 import App from '../App';
 
-describe('', () => {
+describe('Verificando os links do component "App"', () => {
   test('Existe um link com o texto "Home" e direciona para o "/"', () => {
     const { history } = renderWithRouter(<App />);
     const aboutLink = screen.getByRole('link', { name: /home/i });
