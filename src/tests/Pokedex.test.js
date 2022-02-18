@@ -41,5 +41,14 @@ describe('Testando o componente Pokedex', () => {
       expect(pokemonType).toHaveTextContent(type);
       userEvent.click(screen.getByRole('button', { name: 'All' }));
     });
+    userEvent.click(screen.getByRole('button', { name: 'Fire' }));
+    const firstFirePokemon = screen.getByText('Charmander');
+    expect(firstFirePokemon).toBeInTheDocument();
+    userEvent.click(screen.getByRole('button', { name: 'Próximo pokémon' }));
+    const secondFirePokemon = screen.getByText('Rapidash');
+    expect(secondFirePokemon).toBeInTheDocument();
+    userEvent.click(screen.getByRole('button', { name: 'Próximo pokémon' }));
+    const thirdFirePokemon = screen.getByText('Charmander');
+    expect(thirdFirePokemon).toBeInTheDocument();
   });
 });
