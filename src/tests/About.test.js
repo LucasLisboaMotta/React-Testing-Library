@@ -1,12 +1,10 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
-import renderWithRouter from './test components/renderWitchRounter';
-import App from '../App';
+import { render, screen } from '@testing-library/react';
+import About from '../components/About';
 
 describe('Verificando a funcionalidade do componente "About"', () => {
   beforeEach(() => {
-    const { history } = renderWithRouter(<App />);
-    history.push('/about');
+    render(<About />);
   });
   test('Se existe uma tag "h2" com o texto "About Pokédex"', () => {
     const title = screen.getByRole('heading', { name: /About Pokédex/i });
