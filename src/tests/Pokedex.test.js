@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouter from './test components/renderWitchRounter';
 
+const next = 'Próximo pokémon';
 describe('Testando o componente Pokedex', () => {
   beforeEach(() => {
     renderWithRouter(<App />);
@@ -16,7 +17,7 @@ describe('Testando o componente Pokedex', () => {
     });
   test('Teste se é exibido o próximo Pokémon da lista'
     + ' quando o botão Próximo pokémon é clicado.', () => {
-    const button = screen.getByText('Próximo pokémon');
+    const button = screen.getByText(next);
     const ALL_POKEMONS = 9;
     for (let i = 1; i < ALL_POKEMONS; i += 1) {
       userEvent.click(button);
@@ -44,10 +45,10 @@ describe('Testando o componente Pokedex', () => {
     userEvent.click(screen.getByRole('button', { name: 'Fire' }));
     const firstFirePokemon = screen.getByText('Charmander');
     expect(firstFirePokemon).toBeInTheDocument();
-    userEvent.click(screen.getByRole('button', { name: 'Próximo pokémon' }));
+    userEvent.click(screen.getByRole('button', { name: next }));
     const secondFirePokemon = screen.getByText('Rapidash');
     expect(secondFirePokemon).toBeInTheDocument();
-    userEvent.click(screen.getByRole('button', { name: 'Próximo pokémon' }));
+    userEvent.click(screen.getByRole('button', { name: next }));
     const thirdFirePokemon = screen.getByText('Charmander');
     expect(thirdFirePokemon).toBeInTheDocument();
   });
